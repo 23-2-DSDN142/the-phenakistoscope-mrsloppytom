@@ -4,7 +4,7 @@ function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
   pScope.scale_for_screen(true);
   pScope.draw_layer_boundaries(false);
-  pScope.set_direction(CCW);
+  pScope.set_direction(CW);
   pScope.set_slice_count(SLICE_COUNT);
   pScope.load_image("ball" , "png");
   pScope.load_image_sequence("horseRun" , "png", 11);
@@ -25,16 +25,16 @@ function setup_layers(pScope){
   layer2.set_boundary( 0, 400 );
 
   var horseSeq = new PLayer(horse);
-  horseSeq.mode(SWIRL(1));
+  horseSeq.mode(RING);
   horseSeq.set_boundary(800, 1000);
 
 }
 
 function horse(x, y, animation, pScope){
 
-  scale(animation.frame*2);
-  scale(0.8)
-  pScope.draw_image_from_sequence("horseRun", 0, 80, animation.frame);
+  // scale(animation.frame*2);
+  scale(1)
+  pScope.draw_image_from_sequence("horseRun", -10, -400,animation.frame,100);
 
 
 }
