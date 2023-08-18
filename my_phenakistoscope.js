@@ -7,6 +7,7 @@ function setup_pScope(pScope){
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
   pScope.load_image("ball" , "png");
+  pScope.load_image_sequence("horseRun" , "png", 11);
 }
 
 
@@ -23,8 +24,20 @@ function setup_layers(pScope){
   layer2.mode( RING );
   layer2.set_boundary( 0, 400 );
 
+  var horseSeq = new PLayer(horse);
+  horseSeq.mode(SWIRL(1));
+  horseSeq.set_boundary(800, 1000);
+
 }
 
+function horse(x, y, animation, pScope){
+
+  scale(animation.frame*2);
+  scale(0.8)
+  pScope.draw_image_from_sequence("horseRun", 0, 80, animation.frame);
+
+
+}
 
 function ball(x, y, animation, pScope){
   scale(animation.frame*2);
@@ -33,17 +46,17 @@ function ball(x, y, animation, pScope){
   pScope.draw_image("ball",x,y);
 }
 
-function faces(x, y, animation, pScope){
+// function faces(x, y, animation, pScope){
   
-  scale(animation.frame*2);
+//   scale(animation.frame*2);
 
-  ellipse(0,0,50,50); // draw head
-  fill(30);
-  ellipse(-10,-10,10,10); //draw eye
-  ellipse(10,-10,10,10); // draw eye
-  arc(0,10,20,10,0,180); // draw mouth
+//   ellipse(0,0,50,50); // draw head
+//   fill(30);
+//   ellipse(-10,-10,10,10); //draw eye
+//   ellipse(10,-10,10,10); // draw eye
+//   arc(0,10,20,10,0,180); // draw mouth
 
-}
+// }
 
 function squares(x, y, animation, pScope){
 
