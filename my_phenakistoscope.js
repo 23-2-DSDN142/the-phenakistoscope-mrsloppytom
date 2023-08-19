@@ -1,4 +1,4 @@
-const SLICE_COUNT = 10;
+const SLICE_COUNT = 15;
 
 function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
@@ -33,11 +33,12 @@ function setup_layers(pScope){
 function horse(x, y, animation, pScope){
 
   // scale(animation.frame*2);
-  scale(1)
-  pScope.draw_image_from_sequence("horseRun", -10, -400,animation.frame,100);
+  scale(1.2)
+  pScope.draw_image_from_sequence("horseRun", -10, -750,animation.frame,100);
 
 
 }
+
 
 function ball(x, y, animation, pScope){
   scale(animation.frame*2);
