@@ -9,7 +9,8 @@ function setup_pScope(pScope){
   pScope.load_image("ball" , "png");
   pScope.load_image("camera_lens" , "png");
   pScope.load_image("film_reel2" , "png");
-  pScope.load_image_sequence("horseRun" , "png", 11);
+  // pScope.load_image_sequence("horseRun" , "png", 11);
+  pScope.load_image_sequence("horse" , "png", 11);
 }
 
 
@@ -26,7 +27,11 @@ function setup_layers(pScope){
   // layer2.mode( RING );
   // layer2.set_boundary( 0, 400 );
 
-  var horseSeq = new PLayer(horse);
+  // var horserunSeq = new PLayer(horse);
+  // horserunSeq.mode(RING);
+  // horserunSeq.set_boundary(800, 1000);
+
+  var horseSeq = new PLayer(horseRing);
   horseSeq.mode(RING);
   horseSeq.set_boundary(800, 1000);
 
@@ -46,11 +51,19 @@ function camLens(x,y,animation, pScope){
 }
 
 
-function horse(x, y, animation, pScope){
+// function horserun(x, y, animation, pScope){
+
+//   // scale(animation.frame*2);
+//   scale(1.2)
+//   pScope.draw_image_from_sequence("horseRun", -10, -720, animation.frame, 100);
+
+// }
+
+function horseRing(x, y, animation, pScope){
 
   // scale(animation.frame*2);
-  scale(1.2)
-  pScope.draw_image_from_sequence("horseRun", -10, -720, animation.frame, 100);
+  scale(0.7)
+  pScope.draw_image_from_sequence("horse", -10, -1250, animation.frame, 100);
 
 }
 
