@@ -46,7 +46,7 @@ function setup_layers(pScope){
 }
 
 function camLens(x,y,animation, pScope){
-  scale(5)
+  scale(4)
   pScope.draw_image("camera_lens",x,y);
 }
 
