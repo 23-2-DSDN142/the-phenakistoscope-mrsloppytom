@@ -1,4 +1,4 @@
-const SLICE_COUNT = 15;
+const SLICE_COUNT = 12;
 
 function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
@@ -8,7 +8,7 @@ function setup_pScope(pScope){
   pScope.set_slice_count(SLICE_COUNT);
   pScope.load_image("ball" , "png");
   pScope.load_image("camera_lens" , "png");
-  pScope.load_image("film_reel2" , "png");
+  pScope.load_image("filmRing" , "png");
   // pScope.load_image_sequence("horseRun" , "png", 11);
   pScope.load_image_sequence("horse" , "png", 11);
 }
@@ -17,7 +17,7 @@ function setup_pScope(pScope){
 
 function setup_layers(pScope){
 
-  new PLayer(null, 180);  //lets us draw the whole circle background, ignoring the boundaries
+  new PLayer(null, 130, 219, 237);  //lets us draw the whole circle background, ignoring the boundaries
 
   // var layer1 = new PLayer(ball);
   // layer1.mode( SWIRL(10) );
@@ -46,26 +46,20 @@ function setup_layers(pScope){
 }
 
 function camLens(x,y,animation, pScope){
-  scale(4)
+  scale(3)
   pScope.draw_image("camera_lens",x,y);
 }
 
 
-// function horserun(x, y, animation, pScope){
-
-//   // scale(animation.frame*2);
-//   scale(1.2)
-//   pScope.draw_image_from_sequence("horseRun", -10, -720, animation.frame, 100);
-
-// }
 
 function horseRing(x, y, animation, pScope){
 
   // scale(animation.frame*2);
-  scale(0.7)
+  scale(0.5)
   pScope.draw_image_from_sequence("horse", -10, -1250, animation.frame, 100);
 
 }
+
 
 
 // function ball(x, y, animation, pScope){
@@ -99,8 +93,8 @@ function horseRing(x, y, animation, pScope){
 function filmReel(x, y, animation, pScope){
 
   push();
-  scale(2);
-  pScope.draw_image("film_reel2",x,y);
+  scale(0.5);
+  pScope.draw_image("filmRing",x,y);
   pop();
 
   let angleOffset = (360 / SLICE_COUNT) / 2
@@ -114,5 +108,4 @@ function filmReel(x, y, animation, pScope){
  
   
   }
-
 
