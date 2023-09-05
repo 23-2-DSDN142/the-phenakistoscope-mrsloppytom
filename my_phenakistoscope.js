@@ -19,18 +19,6 @@ function setup_layers(pScope){
 
   new PLayer(null, 130, 219, 237);  //lets us draw the whole circle background, ignoring the boundaries
 
-  // var layer1 = new PLayer(ball);
-  // layer1.mode( SWIRL(10) );
-  // layer1.set_boundary( 200, 1000 );
-
-  // var layer2 = new PLayer(squares);
-  // layer2.mode( RING );
-  // layer2.set_boundary( 0, 400 );
-
-  // var horserunSeq = new PLayer(horse);
-  // horserunSeq.mode(RING);
-  // horserunSeq.set_boundary(800, 1000);
-
   var horseSeq = new PLayer(horseRing);
   horseSeq.mode(RING);
   horseSeq.set_boundary(800, 1000);
@@ -55,7 +43,7 @@ function camLens(x,y,animation, pScope){
 function horseRing(x, y, animation, pScope){
 
   // scale(animation.frame*2);
-  scale(0.5)
+  scale(0.7)
   pScope.draw_image_from_sequence("horse", -10, -1250, animation.frame, 100);
 
 }
@@ -93,7 +81,7 @@ function horseRing(x, y, animation, pScope){
 function filmReel(x, y, animation, pScope){
 
   push();
-  scale(0.5);
+  scale(0.7);
   pScope.draw_image("filmRing",x,y);
   pop();
 
