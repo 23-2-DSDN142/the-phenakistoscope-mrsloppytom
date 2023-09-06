@@ -6,9 +6,9 @@ function setup_pScope(pScope){
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CW);
   pScope.set_slice_count(SLICE_COUNT);
-  pScope.load_image("ball" , "png");
   pScope.load_image("camera_lens" , "png");
   pScope.load_image("filmRing" , "png");
+  pScope.load_image("filmWheel" , "png");
   // pScope.load_image_sequence("horseRun" , "png", 11);
   pScope.load_image_sequence("horse" , "png", 11);
 }
@@ -23,7 +23,7 @@ function setup_layers(pScope){
   horseSeq.mode(RING);
   horseSeq.set_boundary(800, 1000);
 
-  var film = new PLayer(filmReel);
+  var film = new PLayer(filmWheel);
   film.mode(RING);
   film.set_boundary(400, 800);
 
@@ -31,6 +31,9 @@ function setup_layers(pScope){
   lens.mode(RING);
   lens.set_boundary(0, 200);
 
+  var lights = new PLayer(flashes);
+  lights.mode(SWIRL(3));
+  lights.set_boundary(0, 800);
 }
 
 function camLens(x,y,animation, pScope){
@@ -78,10 +81,10 @@ function horseRing(x, y, animation, pScope){
 
 // }
 
-function filmReel(x, y, animation, pScope){
+function filmWheel(x, y, animation, pScope){
 
   push();
-  scale(0.7);
+  scale(0.5);
   pScope.draw_image("filmRing",x,y);
   pop();
 
@@ -97,3 +100,8 @@ function filmReel(x, y, animation, pScope){
   
   }
 
+function flashes(x, y, animation, pScope){
+  fill(255);
+  circle(0, -1-animation.wave()*10, 50);
+
+}
