@@ -6,10 +6,7 @@ function setup_pScope(pScope){
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CW);
   pScope.set_slice_count(SLICE_COUNT);
-  pScope.load_image("camera_lens" , "png");
-  pScope.load_image("filmRing" , "png");
-  pScope.load_image("filmWheel" , "png");
-  // pScope.load_image_sequence("horseRun" , "png", 11);
+  pScope.load_image("moon" , "png");
   pScope.load_image_sequence("horse" , "png", 11);
 }
 
@@ -23,85 +20,89 @@ function setup_layers(pScope){
   horseSeq.mode(RING);
   horseSeq.set_boundary(800, 1000);
 
-  var film = new PLayer(filmWheel);
-  film.mode(RING);
-  film.set_boundary(400, 800);
+  // var film = new PLayer(filmWheel);
+  // film.mode(RING);
+  // film.set_boundary(200, 1000);
 
-  var lens = new PLayer(camLens);
-  lens.mode(RING);
-  lens.set_boundary(0, 200);
+  var moon = new PLayer(meliesMoon);
+  moon.mode(RING);
+  moon.set_boundary(0, 200);
 
-  var lights = new PLayer(flashes);
-  lights.mode(SWIRL(3));
-  lights.set_boundary(0, 800);
+  // var lights = new PLayer(flashes);
+  // lights.mode(SWIRL(3));
+  // lights.set_boundary(300, 700);
+
+  var star = new PLayer(stars)
+
+  var bigHead = new PLayer(head)
+  bigHead.mode(RING);
+  bigHead.set_boundary(400, 600)
+
+
 }
 
-function camLens(x,y,animation, pScope){
-  scale(3)
-  pScope.draw_image("camera_lens",x,y);
+// function flashes(x, y, animation, pScope){
+//   fill(255);
+//   noStroke();
+//   rect(0, -100-animation.wave()*10, 10, 100);
+// }
+
+var diHead = 50
+var diMouth = 10
+function head(x,y, animation, pScope){
+  fill(255);
+  noStroke();
+
+  
+  circle(0, 620, diHead)
+  diHead = diHead+1
+  if (diHead>200){
+    diHead=50;
+  }
+
+
+  
+
+
 }
 
+function stars(x, y, animation, pScope){
+  fill(255);
+  noStroke();
+  circle(0,-400-animation.wave()*10, 10)
+  circle(50,-450-animation.wave()*10, 10)
+  circle(-50,-450-animation.wave()*10, 10)
+}
 
+function meliesMoon(x,y,animation, pScope){
+  scale(1)
+  pScope.draw_image("moon",x,y);
+}
 
 function horseRing(x, y, animation, pScope){
 
-  // scale(animation.frame*2);
-  scale(0.7)
-  pScope.draw_image_from_sequence("horse", -10, -1250, animation.frame, 100);
-
-}
-
-
-
-// function ball(x, y, animation, pScope){
-//   scale(animation.frame*2);
-
-//   scale(0.3)
-//   pScope.draw_image("ball",x,y);
-// }
-
-
-
-
-
-// function squares(x, y, animation, pScope){
-
-//   // this is how you set up a background for a specific layer
-//   let angleOffset = (360 / SLICE_COUNT) / 2
-//   let backgroundArcStart = 270 - angleOffset;
-//   let backgroundArcEnd = 270 + angleOffset;
-
-//   fill(255)
-//   noStroke()
-//   arc(x,50,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
-
-//   fill(100)
-//   noStroke()
-//  circle(-10,-300-animation.wave()*10, 100) // .wave is a cosine wave btw
-
-// }
-
-function filmWheel(x, y, animation, pScope){
-
-  push();
-  scale(0.5);
-  pScope.draw_image("filmRing",x,y);
-  pop();
-
+  //setting up background colours
   let angleOffset = (360 / SLICE_COUNT) / 2
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
 
-  fill(0)
+  fill(2, 149, 212)
   noStroke()
-  arc(x, y,800,800,backgroundArcStart,backgroundArcEnd);
+  arc(x,50,3000,3000,backgroundArcStart,backgroundArcEnd);//outermost ring
 
  
-  
-  }
+  // scale(animation.frame*2);
+  scale(0.7)
+  pScope.draw_image_from_sequence("horse", -10, -1250, animation.frame, 100);
 
-function flashes(x, y, animation, pScope){
-  fill(255);
-  circle(0, -1-animation.wave()*10, 50);
+  fill(0, 105, 150)
+  noStroke()
+  arc(x,50,2250,2250,backgroundArcStart,backgroundArcEnd); //second ring
+
+  fill(0, 68, 97)
+  noStroke()
+  arc(x,50,1500,1500,backgroundArcStart,backgroundArcEnd); //innermost ring
 
 }
+
+
