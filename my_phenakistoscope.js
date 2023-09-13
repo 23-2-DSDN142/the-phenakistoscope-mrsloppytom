@@ -50,27 +50,28 @@ function setup_layers(pScope){
 var diEye = 1
 function head(x,y, animation, pScope){
 
+  //quad eyeshadow
   fill(59, 39, 26);//very dark brown
-  quad(-120, 600, //leave
+  quad(-120, 600,
      0,450,
-      120, 600, //LEAVE WHERE IS
-       0, 700)//LEAVE WHERE IS
+    120, 600, 
+    0, 700)
 
-  fill(242, 226, 182);
+  //sclera of eye
+  fill(222, 200, 113);
   noStroke();
   ellipse(0, 590, 250, diEye)
-
- 
 
   fill(59, 39, 26) //very dark brown
   circle(0, 590, 120)
 
+  //reflections in eye
   fill(242, 226, 182)
   circle(0, 600, 10)
   circle(15, 585, 10)
   circle(-15, 585, 10)
 
-  diEye = diEye+0.5
+  diEye = diEye+0.5   //animation for sclera size change
   if (diEye>200){
     diEye=50;
 
@@ -98,16 +99,18 @@ function horseRing(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
 
-  fill(235, 218, 185)
+  fill(191, 77, 75)
   noStroke()
-  arc(x,50,3000,3000,backgroundArcStart,backgroundArcEnd);//outermost ring background
+  arc(x,50,3000,3000,backgroundArcStart,backgroundArcEnd)
 
- 
-  // scale(animation.frame*2);
+  fill(222, 200, 113)
+  noStroke()
+  arc(x,50,2050,2050,backgroundArcStart,backgroundArcEnd);//outermost ring background
+
   scale(0.7)
-  pScope.draw_image_from_sequence("horse", -10, -1225, animation.frame, 100);
+  pScope.draw_image_from_sequence("horse", -10, -1200, animation.frame, 100);
 
-  fill(184, 166, 132)
+  fill(92, 76, 41)
   noStroke()
   arc(x,100,2250,2250,backgroundArcStart,backgroundArcEnd); //second ring
 
