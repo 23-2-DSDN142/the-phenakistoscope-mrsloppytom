@@ -11,74 +11,58 @@ function setup_pScope(pScope){
 }
 
 
-
 function setup_layers(pScope){
-
-  new PLayer(null, 130, 219, 237);  //lets us draw the whole circle background, ignoring the boundaries
 
   var horseSeq = new PLayer(horseRing);
   horseSeq.mode(RING);
   horseSeq.set_boundary(800, 1000);
 
-  // var film = new PLayer(filmWheel);
-  // film.mode(RING);
-  // film.set_boundary(200, 1000);
-
   var moon = new PLayer(meliesMoon);
   moon.mode(RING);
   moon.set_boundary(0, 200);
 
-  // var lights = new PLayer(flashes);
-  // lights.mode(SWIRL(3));
-  // lights.set_boundary(300, 700);
+  var star = new PLayer(stars);
 
-  var star = new PLayer(stars)
-
-  var bigHead = new PLayer(head)
-  bigHead.mode(RING);
-  bigHead.set_boundary(400, 600)
-
+  var bigEye = new PLayer(eye);
+  bigEye.mode(RING);
+  bigEye.set_boundary(400, 600);
 
 }
 
-// function flashes(x, y, animation, pScope){
-//   fill(255);
-//   noStroke();
-//   rect(0, -100-animation.wave()*10, 10, 100);
-// }
-
-var diEye = 1
-function head(x,y, animation, pScope){
+//code for Eye ring
+var diEye = 1; //variable set for sclera diameter
+function eye(x,y, animation, pScope){
 
   //quad eyeshadow
   fill(59, 39, 26);//very dark brown
+  noStroke();
   quad(-120, 600,
      0,450,
     120, 600, 
-    0, 700)
+    0, 700);
 
   //sclera of eye
-  fill(222, 200, 113);
-  noStroke();
-  ellipse(0, 590, 250, diEye)
-
-  fill(59, 39, 26) //very dark brown
-  circle(0, 590, 120)
+  fill(222, 200, 113); //yellowish
+  ellipse(0, 590, 250, diEye);
+  fill(59, 39, 26); //very dark brown
+  circle(0, 590, 120);
 
   //reflections in eye
-  fill(242, 226, 182)
-  circle(0, 600, 10)
-  circle(15, 585, 10)
-  circle(-15, 585, 10)
+  fill(242, 226, 182);
+  circle(0, 600, 10);
+  circle(15, 585, 10);
+  circle(-15, 585, 10);
 
-  diEye = diEye+0.5   //animation for sclera size change
+  //animation for sclera size change
+  diEye = diEye+0.5   
   if (diEye>200){
-    diEye=50;
+    diEye=50};
 
- 
-  }
+  
 }
 
+
+//code for stars - innermost ring
 function stars(x, y, animation, pScope){
   fill(255);
   noStroke();
@@ -87,11 +71,16 @@ function stars(x, y, animation, pScope){
   circle(-50,-400-animation.wave()*10, 10)
 }
 
+
+//code for moon - centre
 function meliesMoon(x,y,animation, pScope){
   scale(1)
   pScope.draw_image("moon2",x,y);
 }
 
+
+//code for horses running - outermost ring
+//also code for background colours (it wouldn't fit elsewhere)
 function horseRing(x, y, animation, pScope){
 
   //setting up background colours
@@ -99,24 +88,29 @@ function horseRing(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
 
+  //red ring on very edge
   fill(191, 77, 75)
   noStroke()
   arc(x,50,3000,3000,backgroundArcStart,backgroundArcEnd)
 
+  //outermost ring background
   fill(222, 200, 113)
   noStroke()
-  arc(x,50,2050,2050,backgroundArcStart,backgroundArcEnd);//outermost ring background
+  arc(x,50,2050,2050,backgroundArcStart,backgroundArcEnd);
 
+  //code for horse animation
   scale(0.7)
   pScope.draw_image_from_sequence("horse", -10, -1200, animation.frame, 100);
 
+  //second ring
   fill(92, 76, 41)
   noStroke()
-  arc(x,100,2250,2250,backgroundArcStart,backgroundArcEnd); //second ring
+  arc(x,100,2250,2250,backgroundArcStart,backgroundArcEnd); 
 
+  //innermost ring
   fill(59, 39, 26)
   noStroke()
-  arc(x,100,1500,1500,backgroundArcStart,backgroundArcEnd); //innermost ring
+  arc(x,100,1500,1500,backgroundArcStart,backgroundArcEnd); 
 
 }
 
