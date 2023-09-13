@@ -63,7 +63,7 @@ function head(x,y, animation, pScope){
  
 
   fill(59, 39, 26) //very dark brown
-  circle(0, 590, 50)
+  circle(0, 590, 120)
 
   fill(242, 226, 182)
   circle(0, 600, 10)
