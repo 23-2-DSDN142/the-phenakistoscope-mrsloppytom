@@ -80,38 +80,36 @@ function meliesMoon(x,y,animation, pScope){
 
 
 //code for horses running - outermost ring
-//also code for background colours (it wouldn't fit elsewhere)
+      //also code for background colours (it wouldn't fit elsewhere)
 function horseRing(x, y, animation, pScope){
 
-  //setting up background colours
-  let angleOffset = (360 / SLICE_COUNT) / 2
-  let backgroundArcStart = 270 - angleOffset;
-  let backgroundArcEnd = 270 + angleOffset;
+      //setting up background colours
+      let angleOffset = (360 / SLICE_COUNT) / 2
+      let backgroundArcStart = 270 - angleOffset;
+      let backgroundArcEnd = 270 + angleOffset;
 
-  //red ring on very edge
-  fill(191, 77, 75)
-  noStroke()
-  arc(x,50,3000,3000,backgroundArcStart,backgroundArcEnd)
+      //red ring on very edge
+      fill(191, 77, 75)
+      noStroke()
+      arc(x,50,3000,3000,backgroundArcStart,backgroundArcEnd)
 
-  //outermost ring background
-  fill(222, 200, 113)
-  noStroke()
-  arc(x,50,2050,2050,backgroundArcStart,backgroundArcEnd);
+      //outermost ring background
+      fill(222, 200, 113)
+      noStroke()
+      arc(x,50,2050,2050,backgroundArcStart,backgroundArcEnd);
 
   //code for horse animation
   scale(0.7)
   pScope.draw_image_from_sequence("horse", -10, -1200, animation.frame, 100);
 
-  //second ring
-  fill(92, 76, 41)
-  noStroke()
-  arc(x,100,2250,2250,backgroundArcStart,backgroundArcEnd); 
+      //second ring
+      fill(92, 76, 41)
+      noStroke()
+      arc(x,100,2250,2250,backgroundArcStart,backgroundArcEnd); 
 
-  //innermost ring
-  fill(59, 39, 26)
-  noStroke()
-  arc(x,100,1500,1500,backgroundArcStart,backgroundArcEnd); 
+      //innermost ring
+      fill(59, 39, 26)
+      noStroke()
+      arc(x,100,1500,1500,backgroundArcStart,backgroundArcEnd); 
 
 }
-
-
