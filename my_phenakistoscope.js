@@ -98,7 +98,7 @@ function horseRing(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
 
-  fill(2, 149, 212)
+  fill(235, 218, 185)
   noStroke()
   arc(x,50,3000,3000,backgroundArcStart,backgroundArcEnd);//outermost ring background
 
@@ -107,11 +107,11 @@ function horseRing(x, y, animation, pScope){
   scale(0.7)
   pScope.draw_image_from_sequence("horse", -10, -1225, animation.frame, 100);
 
-  fill(0, 105, 150)
+  fill(184, 166, 132)
   noStroke()
   arc(x,100,2250,2250,backgroundArcStart,backgroundArcEnd); //second ring
 
-  fill(0, 68, 97)
+  fill(59, 39, 26)
   noStroke()
   arc(x,100,1500,1500,backgroundArcStart,backgroundArcEnd); //innermost ring
 
